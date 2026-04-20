@@ -1,77 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 @import url(base.css);
 
-h1 {
-  font-size: 200%;
-  margin: 8px 0px;
+* {
+  box-sizing: border-box;
 }
 
-/* Constrain the page to the viewport */
-html, body {
+body {
+  margin: 0;
+  background-color: #0f1115;
+  color: #9ca3af;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 16px;
+  display: grid;
   height: 100vh;
+  grid-template-areas:
+    "h"
+    "n"
+    "m"
+    "f";
+  grid-template-rows: auto auto 1fr auto;
 }
 
-/* Center the nav's header and list */
+@media (min-width: 800px) {
+  body {
+    grid-template-areas:
+      "h h"
+      "n m"
+      "f f";
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 80px 1fr 60px;
+  }
+}
+
+header { grid-area: h; background-color: #16191f; border-bottom: 2px solid #8c3b00; }
+nav    { grid-area: n; background-color: #16191f; border-right: 1px solid #232730; }
+main   { grid-area: m; }
+footer { grid-area: f; background-color: #16191f; border-top: 1px solid #232730; }
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #f3f4f6;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
 nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 24px 0;
 }
 
-/* navigation buttons have full width */
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 85%;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
 nav button {
   width: 100%;
+  background-color: #1f232b;
+  color: #d1d5db;
+  border: 1px solid #2f3542;
+  border-radius: 4px;
+  padding: 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Remove unnecessary space and bullets from the lists */
-ul {
-  padding: 0px;
-  margin: 16px;
-  list-style-type: none;
+nav button:hover {
+  background-color: #8c3b00;
+  color: #ffffff;
+  border-color: #8c3b00;
 }
 
-/* Task 2.1. Lay out the childs of the 'body' using Grid Template Areas. */
-
-
-/* Task 3.1. Make the header element a flex container and center its children
-   vertically and horizontally.
- */
-
-
-/* Task 3.2. Make the list items of the unordered list in the nav element a flex container, 
-   use column direction and center the child items
- */
-
-/* Task 3.3. Make the main element a Flexbox container */
-
-
-/* Task 3.4. Make the footer's ul a Flexbox container */
-
-
-/* From here on styling from exercise 1 */
-img {
-  border-radius: 12px;
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #0b0d10;
 }
 
 article {
-  background-color: lightgray;
-  border-radius: 16px;
-  padding: 16px;
-  width: 384px;
-  margin: 8px;
+  background-color: #1a1d24;
+  border: 1px solid #2a2f3a;
+  border-radius: 6px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  width: 340px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
 }
 
-a {
-  color: beige;
+article:hover {
+  border-color: #4b5563;
 }
 
-span {
-  margin-right: 4px;
+article img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #0b0d10;
+  margin-bottom: 20px;
+  filter: grayscale(15%) contrast(115%);
+}
+
+article h1 {
+  font-size: 1.5rem;
+  margin: 0 0 12px 0;
+  color: #f3f4f6;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+article p, article li {
+  color: #9ca3af;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+article h2 {
+  font-size: 1.1rem;
+  color: #8c3b00;
+  margin: 16px 0 8px 0;
+  border-bottom: 1px solid #2f3542;
+  display: inline-block;
+  text-transform: uppercase;
 }
 
 .genre {
-  padding: 4px 8px;
-  border: solid black 1px;
-  border-radius: 6px;
-  background-color: darkgray;
+  border: 1px solid #374151;
+  background-color: #111318;
+  color: #d1d5db;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  display: inline-block;
+  text-transform: uppercase;
   font-weight: bold;
+  border-radius: 4px;
+}
+
+article button {
+  background-color: #2f3542;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  padding: 10px 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+}
+
+article button:hover {
+  background-color: #8c3b00;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 20px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #8c3b00;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #f3f4f6;
 }
